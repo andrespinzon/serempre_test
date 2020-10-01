@@ -1,10 +1,10 @@
 from django.urls import path
 
-# from tasks.views import TasksView, TaskView
+from tasks import views
 
 
 tasks_urlpatterns = [
-
+    path('', views.index, name='index'),
 ]
 
 tasks_api_urlpatterns = [
