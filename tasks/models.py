@@ -3,7 +3,7 @@ from datetime import datetime
 from django.db.models import AutoField, CharField, BooleanField, DateTimeField, Model, PositiveIntegerField, FloatField
 
 
-class TodoList(Model):
+class Task(Model):
     id: int = AutoField(primary_key=True)
     developer: str = CharField('Developer', max_length=255, null=False)
     title: str = CharField('Title', max_length=255, null=False)

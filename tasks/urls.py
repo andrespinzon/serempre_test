@@ -4,6 +4,7 @@ from django.urls import path
 
 
 tasks_urlpatterns = [
+
 ]
 
 tasks_api_urlpatterns = [
