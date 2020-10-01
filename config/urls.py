@@ -19,7 +19,7 @@ from tasks.urls import tasks_urlpatterns, tasks_api_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('tasks/', include(tasks_urlpatterns)),
+    path('', include(tasks_urlpatterns)),
     path('api/', include([
         path('tasks/', include(tasks_api_urlpatterns))
     ])),

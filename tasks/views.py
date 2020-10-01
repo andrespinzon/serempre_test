@@ -7,3 +7,4 @@ def index(request):
     tasks = Task.objects.load_all()
     context = {'tasks': tasks}
     return render(request, 'tasks/index.html', context)
+

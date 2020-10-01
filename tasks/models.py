@@ -8,8 +8,8 @@ from tasks.managers import TaskManager
 class Task(Model):
     id: int = AutoField(primary_key=True)
     developer: str = CharField('Developer', max_length=255, null=False)
-    title: str = CharField('Title', max_length=255, null=False)
-    description: str = CharField('Description', max_length=32, null=False)
+    title: str = CharField('Title', max_length=32, null=False)
+    description: str = CharField('Description', max_length=255, null=False)
     time_worked: int = PositiveIntegerField('Time Worked')
     estimated_time: float = FloatField('Estimated Time')
     is_completed: bool = BooleanField('Is Completed', default=True, null=False)
