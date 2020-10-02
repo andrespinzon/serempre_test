@@ -6,7 +6,7 @@ from django.db.models import Manager
 class TaskManager(Manager):
 
     def load_all(self) -> List:
-        return super().all()
+        return super().all().order_by('created_at')
 
     def get_by_id(self, id: int):
         from tasks.models import Task
