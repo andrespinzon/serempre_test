@@ -9,7 +9,7 @@
     {% if tasks %}
         <ul>
         {% for task in tasks %}
-            <li><a href="/tasks/{{ task.id }}/">{{ task.description }}</a></li>
+            <li><a href="/tasks/{{ task.id }}/">{{ task.description }}</a>  <a href="/tasks/{{ task.id }}/delete/"> DELETE </a></li>
         {% endfor %}
         </ul>
     {% else %}
