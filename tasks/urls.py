@@ -8,6 +8,7 @@ tasks_urlpatterns = [
     path('tasks/', include([
         path('', views.create, name='create'),
         path('<int:task_id>/', views.detail, name='detail'),
+        path('<int:task_id>/delete/', views.delete, name='delete'),
     ])),
 ]
 

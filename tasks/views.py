@@ -36,3 +36,12 @@ def detail(request, task_id):
             return render(request, 'tasks/index.html', response)
 
     return render(request, 'tasks/detail.html', {'form': form, 'task_id': task_id})
+
+
+def delete(request, task_id):
+    task: Task = TaskService.get_by_id(task_id=task_id)
+    task.delete()
+
+    response = TaskService.get_all()
+    return render(request, 'tasks/index.html', response)
+
