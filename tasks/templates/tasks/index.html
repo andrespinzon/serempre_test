@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Index</title>
 </head>
 <body>
+    <li><a href="/tasks/"> Create Task</a></li>
     {% if tasks %}
         <ul>
         {% for task in tasks %}
-            <li><a href="/polls/{{ task.id }}/">{{ task.description[:16] }}</a></li>
+            <li><a href="/polls/{{ task.id }}/">{{ task.description }}</a></li>
         {% endfor %}
         </ul>
     {% else %}
