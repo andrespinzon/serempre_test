@@ -24,12 +24,11 @@ class TaskService:
             if key not in self.data:
                 raise APIException(detail=f'Key {key} is required.')
 
-
     @staticmethod
     def get_all() -> Dict:
         tasks = Task.objects.load_all()
 
-        if len(tasks) > 1:
+        if len(tasks) >= 1:
             service = SoapService()
             for task in tasks:
                 task.time_remaining = service.get_time_remaining(

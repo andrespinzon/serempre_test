@@ -21,9 +21,8 @@ def create(request):
         form: TaskForm = TaskForm(request.POST)
         if form.is_valid():
             form.save()
-            tasks = Task.objects.load_all()
-            context = {'tasks': tasks}
-            return render(request, 'tasks/index.html', context)
+            response = TaskService.get_all()
+            return render(request, 'tasks/index.html', response)
     else:
         form: TaskForm = TaskForm()
 
