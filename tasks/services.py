@@ -1,5 +1,6 @@
 from typing import Dict, Optional, Set
 from .models import Task
+from .serializers import TaskSerializer
 from common.soap_service import SoapService
 
 from rest_framework.exceptions import APIException
@@ -55,6 +56,4 @@ class TaskService:
         except ValidationError as error:
             raise APIException(detail=error.messages[0])
 
-        data = TaskSerializer(instance=task).data
-
-        return data
+        return TaskSerializer(instance=task).data
