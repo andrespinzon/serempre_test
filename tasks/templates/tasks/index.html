@@ -8,9 +8,24 @@
     <li><a href="/tasks/"> Create Task</a></li>
     {% if tasks %}
         <ul>
-        {% for task in tasks %}
-            <li><a href="/tasks/{{ task.id }}/">{{ task.description }}</a>  <a href="/tasks/{{ task.id }}/delete/"> DELETE </a></li>
-        {% endfor %}
+        <table style="width:100%">
+            <tr>
+                <th>Description</th>
+                <th>Time Remaining</th>
+                <th>Actions</th>
+            </tr>
+            {% for task in tasks %}
+            <tr>
+                <td>
+                    <a href="/tasks/{{ task.id }}/">{{ task.description }}</a>
+                </td>
+                <td>{{  task.time_remaining }}</td>
+                <td>
+                    <a href="/tasks/{{ task.id }}/delete/"> DELETE </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
         </ul>
     {% else %}
         <p>No tasks are available.</p>
