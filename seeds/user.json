@@ -1,0 +1,22 @@
+[
+  { "model": "auth.user",
+      "pk": 1,
+      "fields": {
+          "username": "serempre",
+          "password": "pbkdf2_sha256$216000$AYGg9WhoH148$OtSztrC91p21lq3fHbCX7H0X3tAch5AlbvQpZp6s1GE=",
+          "email": "info@serempre.com",
+          "is_superuser": true,
+          "is_staff": true,
+          "is_active": true
+      }
+  },
+  {
+    "model": "authtoken.token",
+    "pk": "5a80f24210ff0faae57e7fca9bfdf655be61bb6a",
+    "fields": {
+        "user": 1,
+        "created": "2020-06-15T14:19:02.196Z"
+    }
+  }
+
+]

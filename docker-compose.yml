@@ -1,0 +1,54 @@
+version: '3'
+services:
+  db:
+    image: mdillon/postgis:9.6-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=serempre
+
+  web:
+    build: .
+    container_name: serempre
+    command: python manage.py runserver 0.0.0.0:5000
+    ports:
+      - 5000:5000
+    volumes:
+      - .:/test_serempre
+    environment:
+      - DB_NAME=serempre
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_EXTERNAL=postgresql://postgres:postgres@db:5432/serempre
+    depends_on:
+      - loaddata
+
+  migrationdb:
+    build: .
+    image: app
+    command: python manage.py migrate
+    volumes:
+      - .:/test_serempre
+    environment:
+      - DB_NAME=serempre
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_EXTERNAL=postgresql://postgres:postgres@db:5432/serempre
+    depends_on:
+      - db
+
+  loaddata:
+    build: .
+    image: app2
+    command: python manage.py loaddata seeds/user.json
+    volumes:
+      - .:/test_serempre
+    environment:
+      - DB_NAME=serempre
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_EXTERNAL=postgresql://postgres:postgres@db:5432/serempre
+    depends_on:
+      - migrationdb
