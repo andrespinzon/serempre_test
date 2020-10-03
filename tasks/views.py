@@ -1,4 +1,10 @@
 from django.shortcuts import render
+from uuid import UUID
+
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.request import Request
+from rest_framework.response import Response
+from rest_framework.status import HTTP_201_CREATED
 
 from .models import Task
 from .forms import TaskForm
@@ -45,3 +51,9 @@ def delete(request, task_id):
     response = TaskService.get_all()
     return render(request, 'tasks/index.html', response)
 
+
+@api_view(['POST'])
+def create_from_api(request: Request) -> Response:
+    service = TaskService()
+    data = service.create_from_view(data=request.data)
+    return Response(data=data, status=HTTP_201_CREATED)

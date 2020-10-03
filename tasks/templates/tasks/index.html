@@ -10,18 +10,23 @@
         <ul>
         <table style="width:100%">
             <tr>
+                <th>Title</th>
                 <th>Description</th>
+                <th>Developer</th>
                 <th>Time Remaining</th>
+                <th>Status</th>
                 <th>Actions</th>
             </tr>
             {% for task in tasks %}
             <tr>
-                <td>
-                    <a href="/tasks/{{ task.id }}/">{{ task.description }}</a>
-                </td>
+                <td>{{  task.title }}</td>
+                <td>{{ task.description }}</td>
+                <td>{{  task.developer }}</td>
                 <td>{{  task.time_remaining }}</td>
+                <td>{{  task.is_completed }}</td>
                 <td>
-                    <a href="/tasks/{{ task.id }}/delete/"> DELETE </a>
+                    <a href="/tasks/{{ task.id }}/"> Edit </a>
+                    <a href="/tasks/{{ task.id }}/delete/"> Delete </a>
                 </td>
             </tr>
             {% endfor %}
