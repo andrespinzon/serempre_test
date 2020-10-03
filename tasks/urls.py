@@ -13,7 +13,5 @@ tasks_urlpatterns = [
 ]
 
 tasks_api_urlpatterns = [
-    path('tasks/', include([
-        path('', )
-    ])),
+    path('', views.create_from_api)
 ]
